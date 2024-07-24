@@ -1,6 +1,7 @@
 // Import Hardhat and SwisstronikJS functions
 const hre = require("hardhat");
 const { encryptDataField, decryptNodeResponse } = require("@swisstronik/utils");
+require('dotenv').config();
 
 /**
  * Send a shielded query/call to the Swisstronik blockchain.
@@ -33,7 +34,7 @@ const sendShieldedQuery = async (provider, destination, data) => {
 
 async function main() {
   // Address of the deployed contract
-  const contractAddress = "0xf84Df872D385997aBc28E3f07A2E3cd707c9698a";
+  const contractAddress = process.env.ADDRESS_DEPLOYED_CONTRACT;
 
   // Get the signer (your account)
   const [signer] = await hre.ethers.getSigners();
